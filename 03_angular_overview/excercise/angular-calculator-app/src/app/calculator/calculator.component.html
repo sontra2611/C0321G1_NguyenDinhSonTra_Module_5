@@ -1,0 +1,33 @@
+<h1>Calculator</h1>
+<form method="post" action="calculate">
+  <fieldset>
+    <legend>Calculator</legend>
+    <table>
+      <tr>
+        <td>First operand: </td>
+        <td><input #firstOperand type="number"></td>
+      </tr>
+      <tr>
+        <td>Operator: </td>
+        <td>
+          <select #operator>
+            <option value="+">Addition</option>
+            <option value="-">Subtraction</option>
+            <option value="*">Multiplication</option>
+            <option value="/">Division</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Second operand: </td>
+        <td><input #secondOperand type="number"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="submit" (click)="calculate(firstOperand.value, operator.value, secondOperand.value)"/></td>
+      </tr>
+    </table>
+  </fieldset>
+</form>
+
+<h2>Result : {{result}}</h2>
