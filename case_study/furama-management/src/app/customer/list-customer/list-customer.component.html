@@ -5,7 +5,7 @@
     <div class="container-fluid">
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="navbar-nav me-auto mb-2 mb-lg-0">
-          <a class="navbar-brand btn btn-primary mb-2 text-white" href="/customer/create" role="button"> + Create
+          <a class="navbar-brand btn btn-primary mb-2 text-white" [routerLink]="'/customer-create'" role="button"> + Create
             Customer</a>
         </div>
         <form class="d-flex">
@@ -50,7 +50,38 @@
       </thead>
 
       <tbody>
+        <tr *ngFor="let customer of customers; index as i">
+          <td>{{i + 1}}</td>
+          <td>{{customer.id}}</td>
+          <td>{{customer.code}}</td>
+          <td>{{customer.name}}</td>
+          <td>{{customer.birthday}}</td>
+          <td>
+            <span *ngIf="customer.gender == 0; else gender">Male</span>
+            <ng-template #gender>
+              <span>Female</span>
+            </ng-template>
+          </td>
+          <td>{{customer.idCard}}</td>
+          <td>{{customer.phone}}</td>
+          <td>{{customer.email}}</td>
+          <td>{{customer.address}}</td>
+          <td>{{customer.customerType.name}}</td>
 
+          <td class="align-middle">
+            <button type="button" class="btn btn-danger"
+                    data-toggle="modal" data-target="#exampleModal">
+              Delete
+            </button>
+          </td>
+
+          <td>
+            <button type="button" class="btn btn-success"
+                    data-toggle="modal" data-target="#exampleModal">
+              Edit
+            </button>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {CustomerService} from "../service/customer.service";
+import {Customer} from "../model/customer";
 
 @Component({
   selector: 'app-list-customer',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-customer.component.css']
 })
 export class ListCustomerComponent implements OnInit {
-
-  constructor() { }
+  customers: Customer[] = [];
+  constructor(private customerService : CustomerService) { }
 
   ngOnInit(): void {
+    this.showList()
   }
 
+  showList() {
+    this.customerService.getAllCustomer().subscribe(data=>{
+      this.customers = data;
+    })
+  }
 }
