@@ -1,0 +1,36 @@
+<h1 class="text-center">Login Form</h1>
+<div class="container">
+  <form [formGroup]="loginForm">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <p class="text-danger" *ngIf="loginForm.controls.email.hasError('required') &&
+    loginForm.controls.email.dirty">
+      Please input email
+    </p>
+    <p class="text-danger" *ngIf="loginForm.controls.email.hasError('email') &&
+    loginForm.controls.email.dirty">
+      Vui lòng nhập đúng định dang email
+    </p>
+
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input formControlName="passWord"  type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+    <p class="text-danger" *ngIf="loginForm.controls.passWord.hasError('required') &&
+    loginForm.controls.passWord.dirty">
+      Please input password
+    </p>
+    <p class="text-danger" *ngIf="loginForm.controls.passWord.hasError('minlength') &&
+    loginForm.controls.passWord.dirty">
+      password minlength is 6
+    </p>
+
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Submit</button>
+  </form>
+</div>

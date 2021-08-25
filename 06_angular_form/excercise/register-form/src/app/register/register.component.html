@@ -1,0 +1,120 @@
+<h1 class="text-center">Register Form</h1>
+<p class="text-center text-success">{{message}}</p>
+<div class="container">
+  <form [formGroup]="registerForm">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email :</label>
+      <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1"
+             aria-describedby="emailHelp">
+    </div>
+    <p class="text-danger" *ngIf="registerForm.controls.email.hasError('required') &&
+    registerForm.controls.email.dirty">
+      Please input email
+    </p>
+    <p class="text-danger" *ngIf="registerForm.controls.email.hasError('email') &&
+    registerForm.controls.email.dirty">
+      Vui lòng nhập đúng định dang email
+    </p>
+
+    <div formGroupName="pwGroup">
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input formControlName="passWord" type="password" class="form-control" id="exampleInputPassword1">
+      </div>
+      <p class="text-danger" *ngIf="registerForm.controls.pwGroup.get('passWord').hasError('required') &&
+    (registerForm.controls.pwGroup.get('passWord').dirty)">
+        Please input password
+      </p>
+      <p class="text-danger" *ngIf="registerForm.controls.pwGroup.get('passWord').hasError('minlength')">
+        minlength is 6
+      </p>
+
+      <div class="form-group">
+        <label for="exampleInputPassword2">Confirm Password</label>
+        <input formControlName="confirmPassWord" type="password" class="form-control" id="exampleInputPassword2">
+      </div>
+      <p class="text-danger" *ngIf="registerForm.controls.pwGroup.get('confirmPassWord').hasError('required') &&
+    (registerForm.controls.pwGroup.get('confirmPassWord').dirty)">
+        Please input confirm pasword
+      </p>
+      <p class="text-danger" *ngIf="registerForm.controls.pwGroup.get('confirmPassWord').hasError('minlength')">
+        minlength is 6
+      </p>
+      <p class="text-danger" *ngIf="registerForm.controls.pwGroup.hasError('invalidPassWord')">
+        password and confirm password not valid
+      </p>
+    </div>
+
+    <div class="form-group">
+      <label>Country</label>
+      <select formControlName="country" class="form-control">
+        <option value="" selected>--choose--</option>
+        <option value="Viet Nam">Viet Nam</option>
+        <option value="American">American</option>
+        <option value="My Tho">My Tho</option>
+      </select>
+    </div>
+    <p class="text-danger" *ngIf="registerForm.controls.country.hasError('required') &&
+    (registerForm.controls.country.dirty)">
+      please choose country
+    </p>
+
+    <div class="form-group">
+      <label for="exampleInputPassword3">Age</label>
+      <input formControlName="age" type="text" class="form-control" id="exampleInputPassword3">
+    </div>
+    <p class="text-danger" *ngIf="registerForm.controls.age.hasError('required') &&
+    (registerForm.controls.age.dirty)">
+      Please input age
+    </p>
+    <p class="text-danger" *ngIf="registerForm.controls.age.hasError('min') &&
+    (registerForm.controls.age.dirty)">
+      Age >=18
+    </p>
+
+    <fieldset class="form-group row">
+      <legend class="col-form-label col-sm-2 float-sm-left pt-0">Gender:</legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input formControlName="gender" class="form-check-input" type="radio" name="gender" id="gridRadios1" value="0" checked="checked">
+          <label class="form-check-label" for="gridRadios1">
+            Male
+          </label>
+        </div>
+        <div class="form-check">
+          <input formControlName="gender" class="form-check-input" type="radio" name="gender" id="gridRadios2" value="1">
+          <label class="form-check-label" for="gridRadios2">
+            Female
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input formControlName="gender" class="form-check-input" type="radio" name="gender" id="gridRadios3" value="2">
+          <label class="form-check-label" for="gridRadios3">
+            Other
+          </label>
+        </div>
+      </div>
+    </fieldset>
+    <p class="text-danger" *ngIf="registerForm.controls.gender.hasError('required') &&
+    (registerForm.controls.gender.pristine)">
+      Please choose gender
+    </p>
+
+    <div class="form-group">
+      <label for="exampleInputPassword4">Phone</label>
+      <input formControlName="phone"  type="text" class="form-control" id="exampleInputPassword4">
+    </div>
+    <p class="text-danger" *ngIf="registerForm.controls.phone.hasError('required') &&
+    (registerForm.controls.phone.dirty)">
+      Please input phone
+    </p>
+    <p class="text-danger" *ngIf="registerForm.controls.phone.hasError('pattern')">
+      phone not valid
+    </p>
+
+    <div class="form-group mt-2">
+      <button (click)="register()" type="button" class="btn btn-primary" [disabled]="registerForm.invalid">Submit</button>
+    </div>
+  </form>
+</div>

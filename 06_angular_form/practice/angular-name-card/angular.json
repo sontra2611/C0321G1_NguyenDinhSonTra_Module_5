@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "furama-management": {
+    "angular-name-card": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/furama-management",
+            "outputPath": "dist/angular-name-card",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,13 +24,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.css"
+              "src/styles.css"
             ],
-            "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -66,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "furama-management:build"
+            "browserTarget": "angular-name-card:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "furama-management:build:production"
+              "browserTarget": "angular-name-card:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "furama-management:build"
+            "browserTarget": "angular-name-card:build"
           }
         },
         "test": {
@@ -92,9 +88,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.js"
+            ]
           }
         },
         "lint": {
@@ -114,19 +114,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "furama-management:serve"
+            "devServerTarget": "angular-name-card:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "furama-management:serve:production"
+              "devServerTarget": "angular-name-card:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "furama-management",
+  "defaultProject": "angular-name-card",
   "cli": {
-    "analytics": "ff21756e-95f5-45ae-8b0c-d915367e3c6d"
+    "analytics": "b38856b7-5aab-470f-850c-c3b13610e090"
   }
 }
