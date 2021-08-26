@@ -15,6 +15,8 @@ import { CreateEmployeeComponent } from './employee/create-employee/create-emplo
 import { ListServiceComponent } from './service/list-service/list-service.component';
 import { CreateServiceComponent } from './service/create-service/create-service.component';
 import { ListContractComponent } from './contract/list-contract/list-contract.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { ListContractComponent } from './contract/list-contract/list-contract.co
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

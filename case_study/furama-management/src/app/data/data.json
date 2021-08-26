@@ -51,6 +51,21 @@
       "phone": "0900000001",
       "email": "thuy12@gmail.com",
       "address": "Quảng Trị"
+    },
+    {
+      "code": "KH-1111",
+      "name": "Nguyễn Văn C",
+      "gender": "1",
+      "customerType": {
+        "id": 1,
+        "name": "Diamond"
+      },
+      "birthday": "2001-01-25",
+      "idCard": "123123123",
+      "phone": "0903333331",
+      "email": "c@gmail.com",
+      "address": "Đà Nẵng",
+      "id": 3
     }
   ],
   "position": [
@@ -281,7 +296,6 @@
       "deposit": 1000000,
       "totalMoney": 5000000
     },
-
     {
       "id": 2,
       "employee": {

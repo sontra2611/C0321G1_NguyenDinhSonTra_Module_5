@@ -8,6 +8,8 @@ import {Customer} from "../model/customer";
   styleUrls: ['./list-customer.component.css']
 })
 export class ListCustomerComponent implements OnInit {
+  page: number;
+
   customers: Customer[] = [];
   constructor(private customerService : CustomerService) { }
 
