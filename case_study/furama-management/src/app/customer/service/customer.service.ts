@@ -34,4 +34,7 @@ export class CustomerService {
     return this.http.put<Customer>(this.API_CUSTOMER + "/" + id, customer)
   }
 
+  public deleteCustomer( id: number): Observable<void> {
+    return this.http.delete<void>(this.API_CUSTOMER + "/" + id)
+  }
 }

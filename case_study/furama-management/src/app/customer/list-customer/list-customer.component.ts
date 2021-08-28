@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {CustomerService} from "../service/customer.service";
 import {Customer} from "../model/customer";
+import {MatDialog} from "@angular/material/dialog";
+import {DeleteCustomerComponent} from "../delete-customer/delete-customer.component";
 
 @Component({
   selector: 'app-list-customer',
@@ -12,7 +14,8 @@ export class ListCustomerComponent implements OnInit {
   search: any;
 
   customers: Customer[] = [];
-  constructor(private customerService : CustomerService) { }
+  constructor(private customerService : CustomerService,
+              public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.showList()
@@ -25,6 +28,17 @@ export class ListCustomerComponent implements OnInit {
   }
 
   openDialog(id: any) {
-    
+    this.customerService.findById(id).subscribe(data => {
+      const dialogRef = this.dialog.open(DeleteCustomerComponent, {
+        width: '500px',
+        data: {customer: data},
+        disableClose: true
+      });
+
+      dialogRef.afterClosed().subscribe(() => {
+        this.ngOnInit();
+      });
+    });
   }
+
 }

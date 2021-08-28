@@ -16,8 +16,8 @@ export class ProductDeleteComponent implements OnInit {
               private router: Router) {
     const id = Number(this.activatedRoute.snapshot.params.id);
     this.productService.deleteProduct(id).subscribe(() => {
+      this.router.navigateByUrl('product/list');
     });
-    this.router.navigateByUrl('product/list');
   }
 
 

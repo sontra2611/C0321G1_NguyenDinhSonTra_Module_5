@@ -17,7 +17,17 @@ export class DeleteCustomerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.id = this.data.name.id;
+    this.id = this.data.customer.id;
+    this.name = this.data.customer.name;
   }
 
+  close(): void {
+    this.dialogRef.close();
+  }
+
+  delete() {
+    this.customerService.deleteCustomer(this.id).subscribe(() => {
+      this.dialogRef.close();
+    });
+  }
 }
