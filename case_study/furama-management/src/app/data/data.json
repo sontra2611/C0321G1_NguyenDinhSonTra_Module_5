@@ -43,8 +43,8 @@
       "name": "Thuý",
       "gender": "0",
       "customerType": {
-        "id": "1",
-        "name": "Diamond"
+        "id": 2,
+        "name": "Platinium"
       },
       "birthday": "2000-06-25",
       "idCard": "123123123",
@@ -81,6 +81,21 @@
       "email": "nguyen@gmail.com",
       "address": "Đà Nẵng",
       "id": 4
+    },
+    {
+      "code": "KH-0002",
+      "name": "Nguyễn Văn C",
+      "gender": "1",
+      "customerType": {
+        "id": 3,
+        "name": "Gold"
+      },
+      "birthday": "2001-12-28",
+      "idCard": "123123123",
+      "phone": "0905201091",
+      "email": "d@codegym.vn",
+      "address": "Đà Nẵng",
+      "id": 5
     }
   ],
   "position": [
@@ -340,8 +355,8 @@
         "id": 2,
         "code": "KH-0002",
         "customerType": {
-          "id": 2,
-          "name": "Platinium"
+          "id": 1,
+          "name": "Diamon"
         },
         "name": "Bích Thuý",
         "gender": "0",
@@ -498,8 +513,8 @@
           "id": 2,
           "code": "KH-0002",
           "customerType": {
-            "id": 2,
-            "name": "Platinium"
+            "id": 1,
+            "name": "Diamond"
           },
           "name": "Bích Thuý",
           "gender": "0",

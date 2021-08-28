@@ -15,7 +15,7 @@ export class TodoService {
   }
 
   findById(id): Observable<Todo[]> {
-    return this.http.get<Todo[]>(this.API + '/' + id).pipe();
+    return this.http.get<Todo[]>(this.API + '/' + id);
   }
 
   delete(id): Observable<any> {
@@ -23,10 +23,10 @@ export class TodoService {
   }
 
   create(todo): Observable<Todo> {
-    return this.http.post<Todo>(this.API, todo).pipe();
+    return this.http.post<Todo>(this.API, todo);
   }
 
   edit(todo, todoId): Observable<Todo> {
-    return this.http.put<Todo>(this.API + '/' + todoId, todo).pipe();
+    return this.http.put<Todo>(this.API + '/' + todoId, todo);
   }
 }

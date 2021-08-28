@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CustomerService} from "../service/customer.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
@@ -24,23 +24,23 @@ export class EditCustomerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getInit();
+    this.formInit();
     this.getAllCustomerType();
     this.setCustomer();
   }
 
-  getInit() {
+  formInit() {
     this.editForm = new FormGroup({
       id: new FormControl(''),
-      code: new FormControl(''),
-      name: new FormControl(''),
-      gender: new FormControl(''),
-      customerType: new FormControl(''),
-      birthday: new FormControl(''),
-      idCard: new FormControl(''),
-      phone: new FormControl(''),
-      email: new FormControl(''),
-      address: new FormControl('')
+      code: new FormControl('', [Validators.required, Validators.pattern('^(KH)-[0-9]{4}$')]),
+      name: new FormControl('', Validators.required),
+      gender: new FormControl('', Validators.required),
+      customerType: new FormControl('', Validators.required),
+      birthday: new FormControl('', Validators.required),
+      idCard: new FormControl('', [Validators.required, Validators.pattern('[0-9]{9}|[0-9]{12}')]),
+      phone: new FormControl('', [Validators.required, Validators.pattern('^(090|091|\\(84\\)\\+90|\\(84\\)\\+91)[0-9]{7}$')]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      address: new FormControl('', Validators.required)
     })
   }
 

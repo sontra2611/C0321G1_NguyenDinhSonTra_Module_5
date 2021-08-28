@@ -19,6 +19,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgxPaginationModule} from "ngx-pagination";
 import {ToastrModule} from 'ngx-toastr';
 import {Ng2SearchPipeModule} from "ng2-search-filter";
+import { DeleteCustomerComponent } from './customer/delete-customer/delete-customer.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {Ng2SearchPipeModule} from "ng2-search-filter";
     CreateEmployeeComponent,
     ListServiceComponent,
     CreateServiceComponent,
-    ListContractComponent
+    ListContractComponent,
+    DeleteCustomerComponent
   ],
   imports: [
     BrowserModule,

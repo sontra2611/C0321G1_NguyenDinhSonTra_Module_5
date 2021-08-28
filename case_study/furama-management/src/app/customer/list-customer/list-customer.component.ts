@@ -23,4 +23,8 @@ export class ListCustomerComponent implements OnInit {
       this.customers = data;
     })
   }
+
+  openDialog(id: any) {
+    
+  }
 }

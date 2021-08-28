@@ -4,39 +4,106 @@
     <div class="form-group">
       <label>Customer code :</label>
       <input formControlName="code" class="form-control" type="text" name="code" aria-describedby="code">
+      <p class="text-danger"
+         *ngIf="createForm.controls.code.hasError('required')
+         && createForm.controls.code.dirty">
+        Please Input !!!
+      </p>
+      <p class="text-danger"
+         *ngIf="createForm.controls.code.hasError('pattern')">
+        Mã Khách hàng có định dạng là KH-XXXX (X là số từ 0-9)
+      </p>
+      <p class="text-danger"
+         *ngIf="createForm.controls.code.hasError('invalidDuplicate')">
+        Mã khách hàng k được trùng
+      </p>
 
       <label class="mt-2">Customer Type :</label>
       <select formControlName="customerType" class="form-control" name="customerType">
+        <option value="">--Choose Customer Type--</option>
         <option *ngFor=" let customerType of customerTypes" [ngValue]="customerType">{{customerType.name}}</option>
       </select>
+      <p class="text-danger"
+         *ngIf="createForm.controls.customerType.hasError('required')
+         && createForm.controls.customerType.dirty">
+        Please Input !!!
+      </p>
 
       <label class="mt-2">name :</label>
       <input formControlName="name" class="form-control" type="text" name="name">
+      <p class="text-danger"
+         *ngIf="createForm.controls.name.hasError('required')
+         && createForm.controls.name.dirty">
+        Please Input !!!
+      </p>
 
       <label class="mt-2">Birthday :</label>
       <input formControlName="birthday" class="form-control" type="date" name="birthday">
+      <p class="text-danger"
+         *ngIf="createForm.controls.birthday.hasError('required')
+         && createForm.controls.birthday.dirty">
+        Please Input !!!
+      </p>
 
       <label for="gender">Gender</label>
       <select formControlName="gender" class="form-control" id="gender" name="gender">
+        <option value="">--Choose gender--</option>
         <option value="1">Male</option>
         <option value="0">Female</option>
         <option value="2">LGBT</option>
       </select>
+      <p class="text-danger"
+         *ngIf="createForm.controls.gender.hasError('required')
+         && createForm.controls.gender.dirty">
+
+      </p>
 
       <label class="mt-2">Id Card :</label>
       <input formControlName="idCard" class="form-control" type="text" name="idCard" aria-describedby="idCard">
+      <p class="text-danger"
+         *ngIf="createForm.controls.idCard.hasError('required')
+         && createForm.controls.idCard.dirty">
+        Please input !!!
+      </p>
+      <p class="text-danger"
+         *ngIf="createForm.controls.idCard.hasError('pattern')">
+        Số CMND phải đúng định dạng XXXXXXXXX hoặc XXXXXXXXXXXX (X là số 0-9)
+      </p>
 
       <label class="mt-2">Phone :</label>
       <input formControlName="phone" class="form-control" type="text" name="phone" aria-describedby="phone">
+      <p class="text-danger"
+         *ngIf="createForm.controls.phone.hasError('required')
+         && createForm.controls.phone.dirty">
+        Please Input !!!
+      </p>
+      <p class="text-danger"
+         *ngIf="createForm.controls.phone.hasError('pattern')">
+        Số điện thoại phải đúng định dạng 090xxxxxxx hoặc 091xxxxxxx hoặc (84)+90xxxxxxx hoặc (84)+91xxxxxxx
+      </p>
 
       <label class="mt-2">Email :</label>
       <input formControlName="email" class="form-control" type="text" name="email" aria-describedby="email">
+      <p class="text-danger"
+         *ngIf="createForm.controls.email.hasError('required')
+         && createForm.controls.email.dirty">
+        Please Input !!!
+      </p>
+      <p class="text-danger"
+         *ngIf="createForm.controls.email.hasError('email')">
+        Địa chỉ email phải đúng định dạng email
+      </p>
 
       <label class="mt-2">Address :</label>
       <input formControlName="address" class="form-control" type="text" name="address">
+      <p class="text-danger"
+         *ngIf="createForm.controls.address.hasError('required')
+         && createForm.controls.address.dirty">
+        Please Input !!!
+      </p>
 
-      <div class="mt-2">
-        <input class="btn btn-success" type="submit" value="Create"> |
+      <div class="my-2">
+        <input class="btn btn-success" type="submit" value="Create" [disabled]="createForm.invalid"> |
         <a class="btn btn-dark" [routerLink]="'/customer-list'" role="button">Back</a>
       </div>
     </div>

@@ -15,7 +15,7 @@ export class CustomerService {
   }
 
   public getAllCustomer(): Observable<Customer[]> {
-    return this.http.get<Customer[]>('http://localhost:3000/customer');
+    return this.http.get<Customer[]>(this.API_CUSTOMER);
   }
 
   public getAllCustomerType(): Observable<CustomerType[]> {
@@ -23,15 +23,15 @@ export class CustomerService {
   }
 
   public saveCustomer(customer: Customer): Observable<Customer> {
-    return this.http.post<Customer>('http://localhost:3000/customer', customer)
+    return this.http.post<Customer>(this.API_CUSTOMER, customer)
   }
 
   public findById(id: number): Observable<Customer> {
-    return this.http.get<Customer>(`${this.API_CUSTOMER}/${id}`)
+    return this.http.get<Customer>(this.API_CUSTOMER + "/" + id)
   }
 
   public editCustomer(customer: Customer, id: number): Observable<Customer> {
-    return this.http.put<Customer>(`${this.API_CUSTOMER}/${id}`, customer)
+    return this.http.put<Customer>(this.API_CUSTOMER + "/" + id, customer)
   }
 
 }

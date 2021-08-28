@@ -11,7 +11,6 @@ import {Router} from "@angular/router";
 export class ProductCreateComponent implements OnInit {
 
   productForm: FormGroup = new FormGroup({
-    id: new FormControl(),
     name: new FormControl(),
     price: new FormControl(),
     description: new FormControl(),
