@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Division} from "../model/division";
+import {EducationDegree} from "../model/education-degree";
 
 @Component({
   selector: 'app-create-employee',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-employee.component.css']
 })
 export class CreateEmployeeComponent implements OnInit {
+  positions: Position[] = [];
+  divisions: Division[] = [];
+  educations: EducationDegree[] = [];
+
+
 
   constructor() { }
 
   ngOnInit(): void {
   }
+
 
 }

@@ -3,6 +3,8 @@ import {CustomerType} from "../model/customer-type";
 import {FormControl, FormGroup} from "@angular/forms";
 import {CustomerService} from "../service/customer.service";
 import {Router} from "@angular/router";
+import {ToastrService} from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-create-customer',
@@ -13,7 +15,10 @@ export class CreateCustomerComponent implements OnInit {
   customerTypes: CustomerType[] = [];
   createForm: FormGroup;
 
-  constructor(private customerService: CustomerService, private router: Router) {
+  constructor(private customerService: CustomerService,
+              private router: Router,
+              private toast: ToastrService) {
+
     this.createForm = new FormGroup({
       code: new FormControl(''),
       name: new FormControl(''),
@@ -41,6 +46,16 @@ export class CreateCustomerComponent implements OnInit {
     const customer = this.createForm.value;
     this.customerService.saveCustomer(customer).subscribe(() => {
       this.router.navigateByUrl('/customer-list');
-    })
+      this.showMessageSuccess();
+
+    }, error => {this.showError()})
+  }
+
+  showMessageSuccess(){
+    this.toast.success('Create successfully', 'message')
+  }
+
+  showError(){
+    this.toast.error('error', 'message')
   }
 }

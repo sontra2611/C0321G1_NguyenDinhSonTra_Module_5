@@ -8,12 +8,14 @@ import {CreateEmployeeComponent} from "./employee/create-employee/create-employe
 import {ListServiceComponent} from "./service/list-service/list-service.component";
 import {CreateServiceComponent} from "./service/create-service/create-service.component";
 import {ListContractComponent} from "./contract/list-contract/list-contract.component";
+import {EditCustomerComponent} from "./customer/edit-customer/edit-customer.component";
 
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
   {path:'customer-list', component: ListCustomerComponent},
   {path:'customer-create', component: CreateCustomerComponent},
+  {path:'customer-edit/:id', component: EditCustomerComponent},
   {path:'employee-list', component: ListEmployeeComponent},
   {path:'employee-create', component: CreateEmployeeComponent},
   {path:'service-list', component: ListServiceComponent},

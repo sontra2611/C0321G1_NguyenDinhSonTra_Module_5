@@ -9,18 +9,29 @@ import {CustomerType} from "../model/customer-type";
 })
 export class CustomerService {
 
+  public API_CUSTOMER = 'http://localhost:3000/customer'
+
   constructor(private http: HttpClient) {
   }
 
   public getAllCustomer(): Observable<Customer[]> {
-    return this.http.get<Customer[]>('http://localhost:3000/customer').pipe();
+    return this.http.get<Customer[]>('http://localhost:3000/customer');
   }
 
   public getAllCustomerType(): Observable<CustomerType[]> {
-    return this.http.get<CustomerType[]>('http://localhost:3000/customerType').pipe();
+    return this.http.get<CustomerType[]>('http://localhost:3000/customerType');
   }
 
-  public saveCustomer(customer): Observable<Customer> {
+  public saveCustomer(customer: Customer): Observable<Customer> {
     return this.http.post<Customer>('http://localhost:3000/customer', customer)
   }
+
+  public findById(id: number): Observable<Customer> {
+    return this.http.get<Customer>(`${this.API_CUSTOMER}/${id}`)
+  }
+
+  public editCustomer(customer: Customer, id: number): Observable<Customer> {
+    return this.http.put<Customer>(`${this.API_CUSTOMER}/${id}`, customer)
+  }
+
 }

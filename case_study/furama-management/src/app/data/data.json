@@ -25,12 +25,12 @@
     {
       "id": 1,
       "code": "KH-0001",
+      "name": "Phi Khanh",
+      "gender": "2",
       "customerType": {
         "id": 1,
         "name": "Diamond"
       },
-      "name": "Phi Khanh",
-      "gender": 1,
       "birthday": "1998-07-01",
       "idCard": "123456789",
       "phone": "0901231231",
@@ -39,17 +39,17 @@
     },
     {
       "id": 2,
-      "code": "KH-0002",
+      "code": "KH-0003",
+      "name": "Thuý",
+      "gender": "0",
       "customerType": {
-        "id": 2,
-        "name": "Platinium"
+        "id": "1",
+        "name": "Diamond"
       },
-      "name": "Bích Thuý",
-      "gender": 0,
-      "birthday": "2000-13-08",
-      "idCard": "123456789",
-      "phone": "0900000001",
-      "email": "thuy12@gmail.com",
+      "birthday": "2000-06-25",
+      "idCard": "123123123",
+      "phone": "0900000002",
+      "email": "thuy123@gmail.com",
       "address": "Quảng Trị"
     },
     {
@@ -66,6 +66,21 @@
       "email": "c@gmail.com",
       "address": "Đà Nẵng",
       "id": 3
+    },
+    {
+      "code": "KH-1001",
+      "name": "Nguyễn Huỳnh Nhật Nguyên",
+      "gender": "1",
+      "customerType": {
+        "id": 4,
+        "name": "Silver"
+      },
+      "birthday": "1999-12-28",
+      "idCard": "1231231231",
+      "phone": "0901231231",
+      "email": "nguyen@gmail.com",
+      "address": "Đà Nẵng",
+      "id": 4
     }
   ],
   "position": [
@@ -269,7 +284,7 @@
           "name": "Diamond"
         },
         "name": "Phi Khanh",
-        "gender": 1,
+        "gender": "1",
         "birthday": "1998-07-01",
         "idCard": "123456789",
         "phone": "0901231231",
@@ -329,7 +344,7 @@
           "name": "Platinium"
         },
         "name": "Bích Thuý",
-        "gender": 0,
+        "gender": "0",
         "birthday": "2000-13-08",
         "idCard": "123456789",
         "phone": "0900000001",
@@ -355,6 +370,173 @@
       "endDate": "2021-04-30",
       "deposit": 1000000,
       "totalMoney": 3000000
+    }
+  ],
+  "attachService": [
+    {
+      "id": 1,
+      "name": "karaoke",
+      "price": "200000",
+      "unit": 1,
+      "status": "open"
+    },
+    {
+      "id": 2,
+      "name": "massage",
+      "price": "300000",
+      "unit": 1,
+      "status": "open"
+    },
+    {
+      "id": 3,
+      "name": "thuê xe",
+      "price": "100000",
+      "unit": 1,
+      "status": "open"
+    }
+  ],
+  "contractDetail": [
+    {
+      "id": 1,
+      "contract": {
+        "id": 1,
+        "employee": {
+          "id": 1,
+          "code": "NV-0001",
+          "name": "Pháp",
+          "position": {
+            "id": 5,
+            "name": "Nhân Viên"
+          },
+          "educationDegree": {
+            "id": 1,
+            "name": "Đại học"
+          },
+          "division": {
+            "id": 4,
+            "name": "Bảo vệ"
+          },
+          "birthday": "1995-02-12",
+          "idCard": "123456789",
+          "salary": "3000000",
+          "phone": "0901111112",
+          "email": "phap@gmail.com",
+          "address": "Quảng Ngãi"
+        },
+        "customer": {
+          "id": 1,
+          "code": "KH-0001",
+          "customerType": {
+            "id": 1,
+            "name": "Diamond"
+          },
+          "name": "Phi Khanh",
+          "gender": "1",
+          "birthday": "1998-07-01",
+          "idCard": "123456789",
+          "phone": "0901231231",
+          "email": "khanh@gmail.com",
+          "address": "Nghệ An"
+        },
+        "service": {
+          "id": 1,
+          "name": "villa1",
+          "code": "DV-0001",
+          "area": 300,
+          "numberOfFloors": 3,
+          "maxPeople": 10,
+          "cost": 5000000,
+          "serviceType": {
+            "id": 1,
+            "name": "villa"
+          },
+          "standardRoom": "vip",
+          "description": "có hồ bơi"
+        },
+        "startDate": "2021-04-24",
+        "endDate": "2021-04-28",
+        "deposit": 1000000,
+        "totalMoney": 5000000
+      },
+      "attachService": {
+        "id": 1,
+        "name": "karaoke",
+        "price": "200000",
+        "unit": 1,
+        "status": "open"
+      },
+      "quantity": 1
+    },
+    {
+      "id": 2,
+      "contract": {
+        "id": 2,
+        "employee": {
+          "id": 2,
+          "code": "NV-0002",
+          "name": "Nguyễn Văn A",
+          "position": {
+            "id": 1,
+            "name": "Giám Đốc"
+          },
+          "educationDegree": {
+            "id": 1,
+            "name": "Đại học"
+          },
+          "division": {
+            "id": 1,
+            "name": "Tài Chính"
+          },
+          "birthday": "1993-11-12",
+          "idCard": "123123123",
+          "salary": "10000000",
+          "phone": "0901234567",
+          "email": "a@gmail.com",
+          "address": "Đà Nẵng"
+        },
+        "customer": {
+          "id": 2,
+          "code": "KH-0002",
+          "customerType": {
+            "id": 2,
+            "name": "Platinium"
+          },
+          "name": "Bích Thuý",
+          "gender": "0",
+          "birthday": "2000-13-08",
+          "idCard": "123456789",
+          "phone": "0900000001",
+          "email": "thuy12@gmail.com",
+          "address": "Quảng Trị"
+        },
+        "service": {
+          "id": 2,
+          "name": "house1",
+          "code": "DV-0002",
+          "area": 200,
+          "numberOfFloors": 2,
+          "maxPeople": 5,
+          "cost": 3000000,
+          "serviceType": {
+            "id": 2,
+            "name": "house"
+          },
+          "standardRoom": "good",
+          "description": "view đẹp"
+        },
+        "startDate": "2021-04-25",
+        "endDate": "2021-04-30",
+        "deposit": 1000000,
+        "totalMoney": 3000000
+      },
+      "attachService": {
+        "id": 2,
+        "name": "massage",
+        "price": "300000",
+        "unit": 1,
+        "status": "open"
+      },
+      "quantity": 2
     }
   ]
 }

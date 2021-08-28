@@ -15,8 +15,10 @@ import { CreateEmployeeComponent } from './employee/create-employee/create-emplo
 import { ListServiceComponent } from './service/list-service/list-service.component';
 import { CreateServiceComponent } from './service/create-service/create-service.component';
 import { ListContractComponent } from './contract/list-contract/list-contract.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgxPaginationModule} from "ngx-pagination";
+import {ToastrModule} from 'ngx-toastr';
+import {Ng2SearchPipeModule} from "ng2-search-filter";
 
 @NgModule({
   declarations: [
@@ -38,7 +40,10 @@ import {NgxPaginationModule} from "ngx-pagination";
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ToastrModule.forRoot(),
+    Ng2SearchPipeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
