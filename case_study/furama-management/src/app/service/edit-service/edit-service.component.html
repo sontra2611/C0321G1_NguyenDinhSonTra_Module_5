@@ -1,104 +1,104 @@
 <div class="container mt-2">
   <h2 class="text-center">ADD New Customer</h2>
-  <form [formGroup]="createForm" (ngSubmit)="createService()">
+  <form [formGroup]="editForm" (ngSubmit)="editService()">
     <div class="form-group">
       <label>Customer code :</label>
       <input formControlName="code" class="form-control" type="text" name="code" aria-describedby="code">
       <p class="text-danger"
-         *ngIf="createForm.controls.code.hasError('required')
-         && createForm.controls.code.dirty">
+         *ngIf="editForm.controls.code.hasError('required')
+         && editForm.controls.code.dirty">
         Please Input !!!
       </p>
       <p class="text-danger"
-         *ngIf="createForm.controls.code.hasError('pattern')">
+         *ngIf="editForm.controls.code.hasError('pattern')">
         Mã Dịch vụ có định dạng là DV-XXXX (X là số từ 0-9)
       </p>
 
       <label class="mt-2">Service Type :</label>
-      <select formControlName="serviceType" class="form-control">
+      <select formControlName="serviceType" [compareWith]="compareFn" class="form-control">
         <option value="" selected>--Choose Service Type--</option>
         <option *ngFor=" let serviceType of serviceTypes" [ngValue]="serviceType">{{serviceType.name}}</option>
       </select>
       <p class="text-danger"
-         *ngIf="createForm.controls.serviceType.hasError('required')
-         && createForm.controls.serviceType.dirty">
+         *ngIf="editForm.controls.serviceType.hasError('required')
+         && editForm.controls.serviceType.dirty">
         Please Input !!!
       </p>
 
       <label class="mt-2">name :</label>
       <input formControlName="name" class="form-control" type="text" name="name">
       <p class="text-danger"
-         *ngIf="createForm.controls.name.hasError('required')
-         && createForm.controls.name.dirty">
+         *ngIf="editForm.controls.name.hasError('required')
+         && editForm.controls.name.dirty">
         Please Input !!!
       </p>
 
       <label class="mt-2">Area :</label>
       <input formControlName="area" class="form-control" type="text" name="birthday">
       <p class="text-danger"
-         *ngIf="createForm.controls.area.hasError('required')
-         && createForm.controls.area.dirty">
+         *ngIf="editForm.controls.area.hasError('required')
+         && editForm.controls.area.dirty">
         Please Input !!!
       </p>
       <p class="text-danger"
-         *ngIf="createForm.controls.area.hasError('min')">
+         *ngIf="editForm.controls.area.hasError('min')">
         vui lòng nhập số dương
       </p>
 
       <label class="mt-2">Number Of Floors :</label>
       <input formControlName="numberOfFloors" class="form-control" type="text" name="idCard" aria-describedby="idCard">
       <p class="text-danger"
-         *ngIf="createForm.controls.numberOfFloors.hasError('required')
-         && createForm.controls.numberOfFloors.dirty">
+         *ngIf="editForm.controls.numberOfFloors.hasError('required')
+         && editForm.controls.numberOfFloors.dirty">
         Please input !!!
       </p>
       <p class="text-danger"
-         *ngIf="createForm.controls.numberOfFloors.hasError('min')">
+         *ngIf="editForm.controls.numberOfFloors.hasError('min')">
         Vui lòng nhập số dương
       </p>
 
       <label class="mt-2">Max People :</label>
       <input formControlName="maxPeople" class="form-control" type="text" name="phone" aria-describedby="phone">
       <p class="text-danger"
-         *ngIf="createForm.controls.maxPeople.hasError('required')
-         && createForm.controls.maxPeople.dirty">
+         *ngIf="editForm.controls.maxPeople.hasError('required')
+         && editForm.controls.maxPeople.dirty">
         Please Input !!!
       </p>
       <p class="text-danger"
-         *ngIf="createForm.controls.maxPeople.hasError('min')">
+         *ngIf="editForm.controls.maxPeople.hasError('min')">
         Vui lòng nhập số dương
       </p>
 
       <label class="mt-2">cost :</label>
       <input formControlName="cost" class="form-control" type="text" name="email" aria-describedby="email">
       <p class="text-danger"
-         *ngIf="createForm.controls.cost.hasError('required')
-         && createForm.controls.cost.dirty">
+         *ngIf="editForm.controls.cost.hasError('required')
+         && editForm.controls.cost.dirty">
         Please Input !!!
       </p>
       <p class="text-danger"
-         *ngIf="createForm.controls.cost.hasError('min')">
+         *ngIf="editForm.controls.cost.hasError('min')">
         Vui lòng nhập số dương
       </p>
 
       <label class="mt-2">Standard Room :</label>
       <input formControlName="standardRoom" class="form-control" type="text" name="address">
       <p class="text-danger"
-         *ngIf="createForm.controls.standardRoom.hasError('required')
-         && createForm.controls.standardRoom.dirty">
+         *ngIf="editForm.controls.standardRoom.hasError('required')
+         && editForm.controls.standardRoom.dirty">
         Please Input !!!
       </p>
 
       <label class="mt-2">Description :</label>
       <input formControlName="description" class="form-control" type="text" name="address">
       <p class="text-danger"
-         *ngIf="createForm.controls.description.hasError('required')
-         && createForm.controls.description.dirty">
+         *ngIf="editForm.controls.description.hasError('required')
+         && editForm.controls.description.dirty">
         Please Input !!!
       </p>
 
       <div class="my-2">
-        <input class="btn btn-success" type="submit" value="Create" [disabled]="createForm.invalid"> |
+        <input class="btn btn-success" type="submit" value="Edit" [disabled]="editForm.invalid"> |
         <a class="btn btn-dark" [routerLink]="'/service-list'" role="button">Back</a>
       </div>
     </div>

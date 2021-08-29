@@ -10,6 +10,7 @@ import {ToastrService} from 'ngx-toastr';
   templateUrl: './create-customer.component.html',
   styleUrls: ['./create-customer.component.css']
 })
+
 export class CreateCustomerComponent implements OnInit {
   customerTypes: CustomerType[] = [];
 

@@ -13,14 +13,10 @@
          *ngIf="createForm.controls.code.hasError('pattern')">
         Mã Khách hàng có định dạng là KH-XXXX (X là số từ 0-9)
       </p>
-      <p class="text-danger"
-         *ngIf="createForm.controls.code.hasError('invalidDuplicate')">
-        Mã khách hàng k được trùng
-      </p>
 
       <label class="mt-2">Customer Type :</label>
       <select formControlName="customerType" class="form-control" name="customerType">
-        <option value="">--Choose Customer Type--</option>
+        <option value="" selected>--Choose Customer Type--</option>
         <option *ngFor=" let customerType of customerTypes" [ngValue]="customerType">{{customerType.name}}</option>
       </select>
       <p class="text-danger"

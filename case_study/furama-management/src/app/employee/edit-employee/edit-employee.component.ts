@@ -1,23 +1,25 @@
 import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {EmployeeService} from "../service/employee.service";
+import {ActivatedRoute, Route, Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
+import {Position} from "../model/position";
 import {Division} from "../model/division";
 import {EducationDegree} from "../model/education-degree";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Position} from "../model/position";
-import {EmployeeService} from "../service/employee.service";
-import {Router} from "@angular/router";
-import {ToastrService} from "ngx-toastr";
 
 @Component({
-  selector: 'app-create-employee',
-  templateUrl: './create-employee.component.html',
-  styleUrls: ['./create-employee.component.css']
+  selector: 'app-edit-employee',
+  templateUrl: './edit-employee.component.html',
+  styleUrls: ['./edit-employee.component.css']
 })
-export class CreateEmployeeComponent implements OnInit {
+export class EditEmployeeComponent implements OnInit {
+  id: number;
   positions: Position[] = [];
   divisions: Division[] = [];
   educations: EducationDegree[] = [];
 
-  createForm = new FormGroup({
+  editForm = new FormGroup({
+    id: new FormControl(),
     code: new FormControl("", [Validators.required]),
     name: new FormControl("", [Validators.required]),
     position: new FormControl("", [Validators.required]),
@@ -33,11 +35,15 @@ export class CreateEmployeeComponent implements OnInit {
 
   constructor(private employeeService: EmployeeService,
               private router: Router,
-              private toast: ToastrService) {
+              private activated: ActivatedRoute,
+              private toast: ToastrService,
+  ) {
+    this.id = activated.snapshot.params.id;
   }
 
   ngOnInit(): void {
-    this.getAllData();
+    this.setEditForm()
+    this.getAllData()
   }
 
   getAllData() {
@@ -54,22 +60,31 @@ export class CreateEmployeeComponent implements OnInit {
     })
   }
 
-  createEmployee() {
-    const employee = this.createForm.value;
-    this.employeeService.saveEmployee(employee).subscribe(() => {
-      this.router.navigateByUrl("/employee-list");
-      this.showMessageSuccess();
-    }, error => {
-      this.showError();
+  setEditForm() {
+    this.employeeService.findById(this.id).subscribe(data => {
+      this.editForm.setValue(data)
     })
   }
 
+  editEmployee() {
+    const employee = this.editForm.value;
+    this.employeeService.editEmployee(this.id, employee).subscribe(() => {
+      this.router.navigateByUrl('/employee-list');
+      this.showMessageSuccess()
+    }, error => {
+      this.showError()
+    })
+  }
 
   showMessageSuccess() {
-    this.toast.success('Create successfully', 'message')
+    this.toast.success('Edit successfully', 'message')
   }
 
   showError() {
     this.toast.error('error', 'message')
+  }
+
+  compareFn(c1: any, c2: any): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
 }

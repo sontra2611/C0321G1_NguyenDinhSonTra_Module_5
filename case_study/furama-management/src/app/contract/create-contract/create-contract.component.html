@@ -1,0 +1,84 @@
+<div class="container mt-2">
+  <h2 class="text-center">ADD New contract</h2>
+
+  <form [formGroup]="createForm" (ngSubmit)="createContract()">
+    <label class="mt-2">Employee :</label>
+    <select formControlName="employee" class="form-control">
+      <option value="" selected>--Choose Employee--</option>
+      <option *ngFor=" let employee of employees" [ngValue]="employee">{{employee.name}}</option>
+    </select>
+    <p class="text-danger"
+       *ngIf="createForm.controls.employee.hasError('required')
+         && createForm.controls.employee.dirty">
+      Please Input !!!
+    </p>
+
+    <label class="mt-2">Customer :</label>
+    <select formControlName="customer" class="form-control">
+      <option value="" selected>--Choose Customer--</option>
+      <option *ngFor=" let customer of customers" [ngValue]="customer">{{customer.name}}</option>
+    </select>
+    <p class="text-danger"
+       *ngIf="createForm.controls.customer.hasError('required')
+         && createForm.controls.customer.dirty">
+      Please Input !!!
+    </p>
+
+    <label class="mt-2">Service :</label>
+    <select formControlName="service" class="form-control">
+      <option value="" selected>--Choose Service--</option>
+      <option *ngFor=" let service of services" [ngValue]="service">{{service.name}}</option>
+    </select>
+    <p class="text-danger"
+       *ngIf="createForm.controls.service.hasError('required')
+         && createForm.controls.customer.dirty">
+      Please Input !!!
+    </p>
+
+    <label class="mt-2">Start Date :</label>
+    <input formControlName="startDate" class="form-control" type="date">
+    <p class="text-danger"
+       *ngIf="createForm.controls.startDate.hasError('required')
+         && createForm.controls.startDate.dirty">
+      Please Input !!!
+    </p>
+
+    <label class="mt-2">End Date :</label>
+    <input formControlName="endDate" class="form-control" type="date" name="birthday">
+    <p class="text-danger"
+       *ngIf="createForm.controls.endDate.hasError('required')
+         && createForm.controls.endDate.dirty">
+      Please Input !!!
+    </p>
+
+    <label class="mt-2">Deposit :</label>
+    <input formControlName="deposit" class="form-control" type="text" name="idCard" aria-describedby="idCard">
+    <p class="text-danger"
+       *ngIf="createForm.controls.deposit.hasError('required')
+         && createForm.controls.deposit.dirty">
+      Please input !!!
+    </p>
+    <p class="text-danger"
+       *ngIf="createForm.controls.deposit.hasError('min')">
+      Vui lòng nhập số dương
+    </p>
+
+    <label class="mt-2">Total Money :</label>
+    <input formControlName="totalMoney" class="form-control" type="text">
+    <p class="text-danger"
+       *ngIf="createForm.controls.totalMoney.hasError('required')
+         && createForm.controls.totalMoney.dirty">
+      Please input !!!
+    </p>
+    <p class="text-danger"
+       *ngIf="createForm.controls.totalMoney.hasError('min')">
+      Vui lòng nhập số dương
+    </p>
+
+
+    <div class="my-2">
+      <input class="btn btn-success" type="submit" value="Create" [disabled]="createForm.invalid"> |
+      <a class="btn btn-dark" [routerLink]="'/contract-list'" role="button">Back</a>
+    </div>
+  </form>
+</div>

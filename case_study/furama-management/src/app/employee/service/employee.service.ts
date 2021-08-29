@@ -1,20 +1,41 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Employee} from "../model/employee";
 import {Division} from "../model/division";
 import {EducationDegree} from "../model/education-degree";
-import {Customer} from "../../customer/model/customer";
+import {Position} from "../model/position";
+import {CustomerType} from "../../customer/model/customer-type";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
 
-  constructor(private http: HttpClient) { }
+  public EMPLOYEE_URL = 'http://localhost:3000/employee'
+
+  constructor(private http: HttpClient) {
+  }
 
   getAllEmployee(): Observable<Employee[]> {
-    return this.http.get<Employee[]>('http://localhost:3000/employee');
+    return this.http.get<Employee[]>(this.EMPLOYEE_URL);
+  }
+
+  public saveEmployee(employee): Observable<Employee> {
+    return this.http.post<Employee>(this.EMPLOYEE_URL, employee)
+  }
+
+  findById(id: number): Observable<Employee> {
+    return this.http.get<Employee>(this.EMPLOYEE_URL + '/' + id);
+  }
+
+  editEmployee(id: number, employee: Employee): Observable<void> {
+    return this.http.put<void>(this.EMPLOYEE_URL + '/' + id, employee);
+  }
+
+
+  deleteEmployee(id: number): Observable<void> {
+    return this.http.delete<void>(this.EMPLOYEE_URL + '/' + id);
   }
 
   getAllPosition(): Observable<Position[]> {
@@ -29,7 +50,11 @@ export class EmployeeService {
     return this.http.get<EducationDegree[]>('http://localhost:3000/educationDegree');
   }
 
-  public saveEmployee(employee): Observable<Employee> {
-    return this.http.post<Employee>('http://localhost:3000/employee', employee)
+  searchEmployee(name: string, divisionName: string): Observable<Employee[]> {
+    return this.http.get<Employee[]>(this.EMPLOYEE_URL + "?name_like=" + name + "&division.name_like=" + divisionName)
+  }
+
+  sortByName(): Observable<Employee[]> {
+    return this.http.get<Employee[]>(this.EMPLOYEE_URL + '?_sort=name')
   }
 }

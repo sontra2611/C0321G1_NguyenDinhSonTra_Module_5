@@ -66,6 +66,21 @@
       "email": "nguyen@gmail.com",
       "address": "Đà Nẵng",
       "id": 4
+    },
+    {
+      "code": "KH-1231",
+      "name": "Nguyễn Văn B",
+      "gender": "1",
+      "customerType": {
+        "id": 5,
+        "name": "Member"
+      },
+      "birthday": "1997-11-11",
+      "idCard": "1231231231",
+      "phone": "0901231231",
+      "email": "a@gmail.com",
+      "address": "Quảng Nam",
+      "id": 5
     }
   ],
   "position": [
@@ -112,6 +127,7 @@
       "name": "Lễ Tân"
     }
   ],
+
   "educationDegree": [
     {
       "id": 1,
@@ -126,6 +142,7 @@
       "name": "Trung cấp"
     }
   ],
+
   "employee": [
     {
       "id": 1,
@@ -153,7 +170,7 @@
     {
       "id": 2,
       "code": "NV-0002",
-      "name": "Nguyễn Văn A",
+      "name": "Nguyễn Văn B",
       "position": {
         "id": 1,
         "name": "Giám Đốc"
@@ -174,6 +191,7 @@
       "address": "Đà Nẵng"
     }
   ],
+
   "serviceType": [
     {
       "id": 1,
@@ -191,12 +209,12 @@
   "service": [
     {
       "id": 1,
-      "name": "villa1",
       "code": "DV-0001",
-      "area": 300,
-      "numberOfFloors": 3,
-      "maxPeople": 10,
-      "cost": 5000000,
+      "name": "villa1",
+      "area": "300",
+      "numberOfFloors": "3",
+      "maxPeople": "10",
+      "cost": "5000000",
       "serviceType": {
         "id": 1,
         "name": "villa"
@@ -235,6 +253,7 @@
       "description": "view đẹp"
     }
   ],
+
   "contract": [
     {
       "id": 1,

@@ -1,20 +1,21 @@
-import {Component, OnInit} from '@angular/core';
-import {ServiceType} from "../model/service-type";
+import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {CustomerType} from "../../customer/model/customer-type";
 import {ServiceService} from "../service/service.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Route, Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
+import {ServiceType} from "../model/service-type";
 
 @Component({
-  selector: 'app-create-service',
-  templateUrl: './create-service.component.html',
-  styleUrls: ['./create-service.component.css']
+  selector: 'app-edit-service',
+  templateUrl: './edit-service.component.html',
+  styleUrls: ['./edit-service.component.css']
 })
-export class CreateServiceComponent implements OnInit {
-  serviceTypes: ServiceType[] = []
+export class EditServiceComponent implements OnInit {
+  id: number;
+  serviceTypes: ServiceType[] = [];
 
-  createForm = new FormGroup({
+  editForm = new FormGroup({
+    id: new FormControl(''),
     code: new FormControl('', [Validators.required, Validators.pattern('^(DV)-[0-9]{4}$')]),
     name: new FormControl('', [Validators.required]),
     area: new FormControl('', [Validators.required, Validators.min(1)]),
@@ -28,10 +29,13 @@ export class CreateServiceComponent implements OnInit {
 
   constructor(private serviceService: ServiceService,
               private router: Router,
+              private activatedRoute: ActivatedRoute,
               private toastTr: ToastrService) {
+      this.id = activatedRoute.snapshot.params.id;
   }
 
   ngOnInit(): void {
+    this.setValueEditForm()
     this.getAllServiceType()
   }
 
@@ -41,21 +45,31 @@ export class CreateServiceComponent implements OnInit {
     })
   }
 
-  createService() {
-    const service = this.createForm.value;
-    this.serviceService.createService(service).subscribe(() => {
+  setValueEditForm() {
+    this.serviceService.findById(this.id).subscribe(data => {
+      this.editForm.setValue(data);
+    })
+  }
+
+  editService() {
+    const service = this.editForm.value;
+    this.serviceService.editService(this.id, service).subscribe(() => {
       this.router.navigateByUrl('/service-list');
       this.showMessageSuccess();
-    }, error => {
-      this.showError();
+    }, error =>{
+      this.showErrorS();
     })
   }
 
   showMessageSuccess() {
-    this.toastTr.success('Create successfully', 'message')
+    this.toastTr.success("Edit Successfully", "message")
   }
 
-  showError() {
-    this.toastTr.error('error', 'message')
+  showErrorS() {
+    this.toastTr.success("Error", "message")
+  }
+
+  compareFn(c1: any, c2: any): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
 }

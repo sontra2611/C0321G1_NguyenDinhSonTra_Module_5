@@ -5,7 +5,8 @@
     <div class="container-fluid">
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="navbar-nav me-auto mb-2 mb-lg-0">
-          <a class="navbar-brand btn btn-primary mb-2 text-white" [routerLink]="'/service-create'" role="button"> + Create
+          <a class="navbar-brand btn btn-primary mb-2 text-white" [routerLink]="'/service-create'" role="button"> +
+            Create
             Service</a>
         </div>
         <form class="d-flex">
@@ -50,7 +51,7 @@
       </thead>
 
       <tbody>
-      <tr *ngFor="let service of services; index as i">
+      <tr *ngFor="let service of services| paginate: {itemsPerPage: 3, currentPage: page }; index as i">
         <td>{{i + 1}}</td>
         <td>{{service.id}}</td>
         <td>{{service.code}}</td>
@@ -65,20 +66,21 @@
 
         <td class="align-middle">
           <button type="button" class="btn btn-danger"
-                  data-toggle="modal" data-target="#exampleModal">
+                  (click)="openDialog(service.id)" data-target="#exampleModal">
             Delete
           </button>
         </td>
 
         <td>
           <button type="button" class="btn btn-success"
-                  data-toggle="modal" data-target="#exampleModal">
+                  [routerLink]="['/service-edit/', service.id]" data-target="#exampleModal">
             Edit
           </button>
         </td>
       </tr>
       </tbody>
     </table>
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
   </div>
 </div>
 

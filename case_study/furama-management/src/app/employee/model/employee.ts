@@ -10,6 +10,7 @@ export interface Employee {
   educationDegree: EducationDegree;
   division: Division;
   birthday: string;
+  idCard: string;
   salary: number;
   phone: string;
   email: string;
