@@ -3,6 +3,7 @@ import {CustomerService} from "../service/customer.service";
 import {Customer} from "../model/customer";
 import {MatDialog} from "@angular/material/dialog";
 import {DeleteCustomerComponent} from "../delete-customer/delete-customer.component";
+import {CustomerType} from "../model/customer-type";
 
 @Component({
   selector: 'app-list-customer',
@@ -11,19 +12,28 @@ import {DeleteCustomerComponent} from "../delete-customer/delete-customer.compon
 })
 export class ListCustomerComponent implements OnInit {
   page: number;
-  search: any;
-
+  term = '';
+  customerTypeName = '';
+  customerTypes: CustomerType[] = [];
   customers: Customer[] = [];
+
   constructor(private customerService : CustomerService,
               public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.showList()
+    this.showList();
+    this.getAllCustomerType();
   }
 
   showList() {
     this.customerService.getAllCustomer().subscribe(data=>{
       this.customers = data;
+    })
+  }
+
+  getAllCustomerType() {
+    this.customerService.getAllCustomerType().subscribe(data => {
+      this.customerTypes = data;
     })
   }
 
@@ -41,4 +51,12 @@ export class ListCustomerComponent implements OnInit {
     });
   }
 
+  searchCustomer() {
+    console.log(this.term)
+    console.log(this.customerTypeName)
+    this.customerService.search(this.term, this.customerTypeName).subscribe(data => {
+      this.customers = data;
+      this.page = 1;
+    })
+  }
 }

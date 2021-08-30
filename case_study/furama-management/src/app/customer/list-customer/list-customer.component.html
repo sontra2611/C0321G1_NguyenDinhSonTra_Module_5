@@ -9,9 +9,28 @@
             Customer</a>
         </div>
 
-        <div class="col-sm-3">
-          <input [(ngModel)]="search" class="form-control" type="search" placeholder="Search"
+        <div class="d-flex justify-content-end">
+          <select [(ngModel)]="customerTypeName"  class="form-control">
+            <option value="">--Choose Customer Type--</option>
+            <option *ngFor=" let customerType of customerTypes" [ngValue]="customerType.name">{{customerType.name}}</option>
+          </select>
+
+          <input [(ngModel)]="term" class="form-control mx-2" type="search" placeholder="Search"
                  aria-label="Search" name="employee">
+          <button class="btn btn-info text-white" type="button" (click)="searchCustomer()">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" fill="currentColor"
+                     class="bi bi-search" viewBox="0 0 16 16">
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+              </li>
+              <li class="nav-item px-1">
+                Search
+              </li>
+            </ul>
+          </button>
         </div>
 
       </div>
@@ -39,7 +58,7 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let customer of customers | filter: search | paginate: {itemsPerPage: 3, currentPage: page }; index as i">
+        <tr *ngFor="let customer of customers | filter: term | paginate: {itemsPerPage: 3, currentPage: page }; index as i">
           <td>{{i + 1}}</td>
           <td>{{customer.id}}</td>
           <td>{{customer.code}}</td>

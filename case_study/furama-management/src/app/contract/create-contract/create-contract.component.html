@@ -35,21 +35,31 @@
       Please Input !!!
     </p>
 
-    <label class="mt-2">Start Date :</label>
-    <input formControlName="startDate" class="form-control" type="date">
-    <p class="text-danger"
-       *ngIf="createForm.controls.startDate.hasError('required')
-         && createForm.controls.startDate.dirty">
-      Please Input !!!
-    </p>
+    <div formGroupName="dateGroup">
+      <label class="mt-2">Start Date :</label>
+      <input formControlName="startDate" class="form-control" type="date">
+      <p class="text-danger"
+         *ngIf="createForm.controls.dateGroup.get('startDate').hasError('required')
+         && createForm.controls.dateGroup.get('startDate').dirty">
+        Please Input !!!
+      </p>
 
-    <label class="mt-2">End Date :</label>
-    <input formControlName="endDate" class="form-control" type="date" name="birthday">
-    <p class="text-danger"
-       *ngIf="createForm.controls.endDate.hasError('required')
-         && createForm.controls.endDate.dirty">
-      Please Input !!!
-    </p>
+      <label class="mt-2">End Date :</label>
+      <input formControlName="endDate" class="form-control" type="date" name="birthday">
+      <p class="text-danger"
+         *ngIf="createForm.controls.dateGroup.get('endDate').hasError('required')
+         && createForm.controls.dateGroup.get('endDate').dirty">
+        Please Input !!!
+      </p>
+<!--      <p class="text-danger"-->
+<!--         *ngIf="createForm.controls.dateGroup.hasError('invalidDate')">-->
+<!--        Ngày kết thúc hợp đồng k được nhỏ hơn ngày làm hợp đồng-->
+<!--      </p>-->
+      <p style="color: red" *ngIf="createForm.controls.dateGroup.hasError('invalidDate')
+        && createForm.controls.dateGroup.get('endDate').dirty">
+        Not Valid!!!
+      </p>
+    </div>
 
     <label class="mt-2">Deposit :</label>
     <input formControlName="deposit" class="form-control" type="text" name="idCard" aria-describedby="idCard">

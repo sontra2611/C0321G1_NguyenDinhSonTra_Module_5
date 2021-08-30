@@ -76,20 +76,23 @@
       <legend class="col-form-label col-sm-2 float-sm-left pt-0">Gender:</legend>
       <div class="col-sm-10">
         <div class="form-check">
-          <input formControlName="gender" class="form-check-input" type="radio" name="gender" id="gridRadios1" value="0" checked="checked">
+          <input formControlName="gender" class="form-check-input" type="radio" name="gender" id="gridRadios1" value="0"
+                 checked="checked">
           <label class="form-check-label" for="gridRadios1">
             Male
           </label>
         </div>
         <div class="form-check">
-          <input formControlName="gender" class="form-check-input" type="radio" name="gender" id="gridRadios2" value="1">
+          <input formControlName="gender" class="form-check-input" type="radio" name="gender" id="gridRadios2"
+                 value="1">
           <label class="form-check-label" for="gridRadios2">
             Female
           </label>
         </div>
 
         <div class="form-check">
-          <input formControlName="gender" class="form-check-input" type="radio" name="gender" id="gridRadios3" value="2">
+          <input formControlName="gender" class="form-check-input" type="radio" name="gender" id="gridRadios3"
+                 value="2">
           <label class="form-check-label" for="gridRadios3">
             Other
           </label>
@@ -103,7 +106,7 @@
 
     <div class="form-group">
       <label for="exampleInputPassword4">Phone</label>
-      <input formControlName="phone"  type="text" class="form-control" id="exampleInputPassword4">
+      <input formControlName="phone" type="text" class="form-control" id="exampleInputPassword4">
     </div>
     <p class="text-danger" *ngIf="registerForm.controls.phone.hasError('required') &&
     (registerForm.controls.phone.dirty)">
@@ -114,7 +117,8 @@
     </p>
 
     <div class="form-group mt-2">
-      <button (click)="register()" type="button" class="btn btn-primary" [disabled]="registerForm.invalid">Submit</button>
+      <button (click)="register()" type="button" class="btn btn-primary" [disabled]="registerForm.invalid">Submit
+      </button>
     </div>
   </form>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CustomerService} from "../../customer/service/customer.service";
 import {EmployeeService} from "../../employee/service/employee.service";
 import {ServiceService} from "../../service/service/service.service";
@@ -8,7 +8,7 @@ import {ToastrService} from "ngx-toastr";
 import {Customer} from "../../customer/model/customer";
 import {Employee} from "../../employee/model/employee";
 import {Service} from "../../service/model/service";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-create-contract',
@@ -24,8 +24,10 @@ export class CreateContractComponent implements OnInit {
     employee: new FormControl('', Validators.required),
     customer: new FormControl('', Validators.required),
     service: new FormControl('', Validators.required),
-    startDate: new FormControl('', Validators.required),
-    endDate: new FormControl('', Validators.required),
+    dateGroup: new FormGroup({
+      startDate: new FormControl('', Validators.required),
+      endDate: new FormControl('', Validators.required)
+    }, this.checkDate),
     deposit: new FormControl('', [Validators.required, Validators.min(1)]),
     totalMoney: new FormControl('', [Validators.required, Validators.min(1)])
   })
@@ -35,7 +37,8 @@ export class CreateContractComponent implements OnInit {
               public contractService: ContractService,
               public serviceService: ServiceService,
               public router: Router,
-              private toastTr: ToastrService) { }
+              private toastTr: ToastrService) {
+  }
 
   ngOnInit(): void {
     this.getAllData()
@@ -59,5 +62,13 @@ export class CreateContractComponent implements OnInit {
     this.contractService.createContract(this.createForm.value).subscribe(() => {
       this.router.navigateByUrl('/contract-list');
     });
+  }
+
+  checkDate(dateControl: AbstractControl) {
+     const dateGroupValue = dateControl.value;
+     let startDate = new Date(dateGroupValue.startDate);
+     let endDate = new Date(dateGroupValue.endDate);
+
+     return (endDate > startDate) ? null: {invalidDate : true};
   }
 }
